@@ -1,0 +1,14 @@
+/* TWK Everett Font */
+@font-face {
+  font-family: 'TWK Everett:Regular';
+  src: local('TWK Everett'), local('TWKEverett-Regular');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TWK Everett:Bold';
+  src: local('TWK Everett Bold'), local('TWKEverett-Bold');
+  font-weight: 700;
+  font-style: normal;
+}
