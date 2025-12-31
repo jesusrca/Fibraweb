@@ -191,11 +191,6 @@ export default function Header({ currentPage, lightMode = false }: HeaderProps) 
                 delay: 0,
                 duration: 0.5,
                 ease: [0.76, 0, 0.24, 1],
-                exit: {
-                  delay: 1.7,
-                  duration: 0.5,
-                  ease: [0.76, 0, 0.24, 1]
-                }
               }}
             />
             
@@ -209,11 +204,6 @@ export default function Header({ currentPage, lightMode = false }: HeaderProps) 
                 delay: 0.15,
                 duration: 0.5,
                 ease: [0.76, 0, 0.24, 1],
-                exit: {
-                  delay: 1.3,
-                  duration: 0.5,
-                  ease: [0.76, 0, 0.24, 1]
-                }
               }}
             />
             
@@ -227,11 +217,6 @@ export default function Header({ currentPage, lightMode = false }: HeaderProps) 
                 delay: 0.3,
                 duration: 0.5,
                 ease: [0.76, 0, 0.24, 1],
-                exit: {
-                  delay: 0.9,
-                  duration: 0.5,
-                  ease: [0.76, 0, 0.24, 1]
-                }
               }}
             />
 
@@ -245,11 +230,6 @@ export default function Header({ currentPage, lightMode = false }: HeaderProps) 
                 delay: 0.45,
                 duration: 0.5,
                 ease: [0.76, 0, 0.24, 1],
-                exit: {
-                  delay: 0.5,
-                  duration: 0.5,
-                  ease: [0.76, 0, 0.24, 1]
-                }
               }}
             />
 
@@ -262,10 +242,6 @@ export default function Header({ currentPage, lightMode = false }: HeaderProps) 
               transition={{
                 delay: 0.95,
                 duration: 0.3,
-                exit: {
-                  delay: 0,
-                  duration: 0
-                }
               }}
             >
               <nav className="flex flex-col items-center gap-[40px] w-full">
@@ -281,10 +257,6 @@ export default function Header({ currentPage, lightMode = false }: HeaderProps) 
                       delay: 1.0 + index * 0.08,
                       duration: 0.4,
                       ease: [0.25, 0.46, 0.45, 0.94],
-                      exit: {
-                        delay: 0,
-                        duration: 0
-                      }
                     }}
                     whileHover={{ scale: 1.05, x: 10 }}
                     whileTap={{ scale: 0.95 }}
