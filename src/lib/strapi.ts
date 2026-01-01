@@ -147,7 +147,13 @@ export function mapBlogPosts(
         }
         return null;
       })
-      .filter(Boolean);
+      .filter(
+        (block): block is {
+          type: "image" | "list" | "paragraph" | "heading" | "quote";
+          content: string | string[];
+          caption?: string;
+        } => Boolean(block),
+      );
 
     return {
       id: attr.slug || String(item.id),
