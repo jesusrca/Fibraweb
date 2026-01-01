@@ -11,6 +11,9 @@ type StrapiResponse<T> = {
 };
 
 export function getStrapiURL(path = "") {
+  if (path.startsWith("http://") || path.startsWith("https://")) {
+    return path;
+  }
   const baseUrl = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL;
   if (!baseUrl) {
     throw new Error("STRAPI_URL or NEXT_PUBLIC_STRAPI_URL is not set");
