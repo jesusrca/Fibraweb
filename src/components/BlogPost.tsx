@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import { useRef, useEffect } from "react";
 import { BlogPost as BlogPostType } from "../data/blog";
 

@@ -1,29 +1,19 @@
-"use client";
+import { getBlogPosts, mapBlogPosts } from "@/lib/strapi";
+import BlogPostClientWrapper from "./BlogPostClientWrapper";
 
-import { useMemo } from "react";
-import { useParams, useRouter } from "next/navigation";
-import BlogPost from "@/components/BlogPost";
-import type { BlogPost as BlogPostType } from "@/data/blog";
-import content from "@/data/content.json";
-
-export default function BlogPostPage() {
-  const router = useRouter();
-  const params = useParams();
-  const postId = Array.isArray(params?.id) ? params.id[0] : params?.id;
-
-  const blogPost = useMemo(() => {
-    const posts = content.blogPosts as BlogPostType[];
-    return posts.find((post) => post.id === postId);
-  }, [postId]);
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const rawPosts = await getBlogPosts();
+  const blogPosts = mapBlogPosts(rawPosts);
+  const blogPost = blogPosts.find((post) => post.id === id);
 
   if (!blogPost) {
-    return null;
+    return <div className="p-20 text-center">Post no encontrado</div>;
   }
 
-  return (
-    <BlogPost
-      blogPost={blogPost}
-      onNavigateToBlogList={() => router.push("/blog")}
-    />
-  );
+  return <BlogPostClientWrapper blogPost={blogPost} />;
 }

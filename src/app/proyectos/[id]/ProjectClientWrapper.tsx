@@ -2,10 +2,17 @@
 
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
-import ProjectDetail from "@/components/ProjectDetail"; // Tu componente visual actual
+import ProjectDetail from "@/components/ProjectDetail";
 import { useHeroIntersection } from "@/components/HeroIntersectionContext";
+import type { Project } from "@/data/projects";
 
-export default function ProjectClientWrapper({ allProjects, currentSlug }: { allProjects: any[], currentSlug: string }) {
+export default function ProjectClientWrapper({
+  allProjects,
+  currentSlug,
+}: {
+  allProjects: Project[];
+  currentSlug: string;
+}) {
   const router = useRouter();
   const { setHeroIntersecting } = useHeroIntersection();
 

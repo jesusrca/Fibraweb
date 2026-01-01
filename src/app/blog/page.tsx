@@ -1,18 +1,9 @@
-"use client";
+import { getBlogPosts, mapBlogPosts } from "@/lib/strapi";
+import BlogListClientWrapper from "./BlogListClientWrapper";
 
-import { useRouter } from "next/navigation";
-import BlogList from "@/components/BlogList";
-import type { BlogPost as BlogPostType } from "@/data/blog";
-import content from "@/data/content.json";
+export default async function BlogPage() {
+  const rawPosts = await getBlogPosts();
+  const blogPosts = mapBlogPosts(rawPosts);
 
-export default function BlogPage() {
-  const router = useRouter();
-  const blogPosts = content.blogPosts as BlogPostType[];
-
-  return (
-    <BlogList
-      blogPosts={blogPosts}
-      onBlogPostClick={(postId) => router.push(`/blog/${postId}`)}
-    />
-  );
+  return <BlogListClientWrapper blogPosts={blogPosts} />;
 }

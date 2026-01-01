@@ -1,5 +1,11 @@
-import { getProjects, getStrapiURL } from "@/lib/strapi";
+import {
+  getProjects,
+  getStrapiURL,
+  type StrapiEntity,
+  type StrapiProjectAttributes,
+} from "@/lib/strapi";
 import ProjectClientWrapper from "./ProjectClientWrapper";
+import type { Project } from "@/data/projects";
 
 type RichTextNode = {
   type?: string;
@@ -35,7 +41,8 @@ export default async function ProjectDetailPage({
   const strapiData = await getProjects();
 
   // 2. Mapeamos los datos (Adaptado para Strapi 5)
-  const cleanProjects = strapiData.map((item: any) => {
+  const cleanProjects: Project[] = strapiData.map(
+    (item: StrapiEntity<StrapiProjectAttributes>) => {
     // NOTA: En Strapi 5, a veces los datos vienen directos en 'item' y no en 'item.attributes'
     // Esta línea intenta leer 'attributes' por si acaso, si no, usa 'item' directo.
     const attr = item.attributes || item;
@@ -53,10 +60,14 @@ export default async function ProjectDetailPage({
     const galleryData = attr.gallery?.data || attr.gallery;
     // Si es un array, lo mapeamos
     const galleryImages = Array.isArray(galleryData)
-      ? galleryData.map((img: any) => {
-          const imgUrl = img.attributes?.url || img.url;
-          return imgUrl ? getStrapiURL(imgUrl) : "";
-        }).filter(Boolean) // Quitamos strings vacíos
+      ? galleryData
+          .map((img) => {
+            const imgUrl =
+              (img as { attributes?: { url?: string }; url?: string })
+                ?.attributes?.url || (img as { url?: string })?.url;
+            return imgUrl ? getStrapiURL(imgUrl) : "";
+          })
+          .filter(Boolean) // Quitamos strings vacíos
       : [];
 
     // --- Construcción del objeto Media para tu componente ---
@@ -74,16 +85,22 @@ export default async function ProjectDetailPage({
       title: attr.title || "Proyecto sin título",
       description: extractText(attr.description),
       services: Array.isArray(attr.services)
-        ? attr.services.map((service: any) =>
-            typeof service === "string" ? service : service?.name || "",
-          ).filter(Boolean)
+        ? attr.services
+            .map((service) =>
+              typeof service === "string"
+                ? service
+                : (service as { name?: string })?.name || "",
+            )
+            .filter(Boolean)
         : null,
       year: attr.year || null,
       credits: attr.credits || null,
       thumbnail: coverImage,
+      thumbnailHeight: attr.thumbnailHeight || 360,
       media,
     };
-  });
+  },
+  );
 
   return <ProjectClientWrapper allProjects={cleanProjects} currentSlug={id} />;
 }

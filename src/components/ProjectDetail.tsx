@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll } from "motion/react";
 import { useRef, useEffect, useState } from "react";
 import { Project, ProjectMedia } from "../data/projects";
 
@@ -26,8 +26,6 @@ function MediaItem({ media, index }: MediaItemProps) {
     container: undefined // Use window/document as container
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1, 1.1]);
 
   return (
     <div
