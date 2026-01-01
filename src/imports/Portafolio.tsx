@@ -1,7 +1,11 @@
 import svgPaths from "./svg-g0opz5xmx5";
 import clsx from "clsx";
+import type { StaticImageData } from "next/image";
 import imgHeader from "figma:asset/54c23f32bd6f559ab9debd7172119e64e625d602.png";
 import imgFoto1 from "figma:asset/2d6a4fdf47d9939528b10ed5f0b46774a69b84f0.png";
+
+const asSrc = (image: StaticImageData | string) =>
+  typeof image === "string" ? image : image.src;
 type GroupProps = {
   additionalClassNames?: string;
 };
@@ -50,7 +54,7 @@ type FotoImageProps = {
 function FotoImage({ additionalClassNames = "" }: FotoImageProps) {
   return (
     <div className={clsx("relative shrink-0 w-full", additionalClassNames)}>
-      <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgFoto1} />
+      <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgFoto1)} />
     </div>
   );
 }
@@ -127,7 +131,7 @@ export default function Portafolio() {
   return (
     <div className="bg-[#faf9f3] content-stretch flex flex-col gap-[50px] items-start relative size-full" data-name="portafolio">
       <div className="h-[89px] relative shrink-0 w-full" data-name="Header">
-        <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgHeader} />
+        <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgHeader)} />
         <div className="flex flex-col items-center justify-center size-full">
           <div className="content-stretch flex flex-col items-center justify-center px-[40px] py-[25px] relative size-full">
             <div className="content-stretch flex gap-[231px] items-center relative shrink-0" data-name="Header">

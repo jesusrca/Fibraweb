@@ -10,6 +10,7 @@ interface LoadingIntroProps {
 
 export default function LoadingIntro({ onComplete }: LoadingIntroProps) {
   const [showLogo, setShowLogo] = useState(true);
+  const easeStandard = [0.25, 0.46, 0.45, 0.94] as const;
 
   useEffect(() => {
     // Después de 1.5 segundos, comenzar la animación de salida
@@ -38,7 +39,7 @@ export default function LoadingIntro({ onComplete }: LoadingIntroProps) {
         // Invertir el delay: amarillo primero (4), luego rosa (3), rojo (2), morado (1), verde (0)
         delay: (4 - i) * 0.08,
         duration: 0.5,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: easeStandard,
       }
     }),
     exit: {
@@ -46,7 +47,7 @@ export default function LoadingIntro({ onComplete }: LoadingIntroProps) {
       scale: 1.2,
       transition: {
         duration: 0.5,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: easeStandard,
       }
     }
   };

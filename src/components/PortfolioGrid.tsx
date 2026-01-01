@@ -31,7 +31,6 @@ function ProjectCard({ project, index }: ProjectCardProps) {
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start end", "end start"],
-    layoutEffect: false,
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);

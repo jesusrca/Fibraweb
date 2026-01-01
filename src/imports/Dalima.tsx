@@ -1,5 +1,6 @@
 import svgPaths from "./svg-kh6q6kq73d";
 import clsx from "clsx";
+import type { StaticImageData } from "next/image";
 import imgHeader from "figma:asset/54c23f32bd6f559ab9debd7172119e64e625d602.png";
 import imgFoto1 from "figma:asset/2d6a4fdf47d9939528b10ed5f0b46774a69b84f0.png";
 import imgFoto8 from "figma:asset/ab0a41b439696b9145a6c4d788938857b2e01553.png";
@@ -9,6 +10,9 @@ import imgFoto7 from "figma:asset/df16066dec67046a25faf7d071cbf4682f4710ee.png";
 import imgFoto10 from "figma:asset/4c029a20b44b765fbe6363a9f5bef50fb9e33c2e.png";
 import imgFoto11 from "figma:asset/3e43781ebf329e0593d4400b7095e3caae3a39cf.png";
 import imgFoto12 from "figma:asset/ffcb57708538b3337c863382cff6e0f5b7917c21.png";
+
+const asSrc = (image: StaticImageData | string) =>
+  typeof image === "string" ? image : image.src;
 type GroupProps = {
   additionalClassNames?: string;
 };
@@ -55,7 +59,7 @@ export default function Dalima() {
   return (
     <div className="bg-[#faf9f3] content-stretch flex flex-col gap-[57px] items-start relative size-full" data-name="Dalima">
       <div className="h-[89px] relative shrink-0 w-full" data-name="Header">
-        <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgHeader} />
+        <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgHeader)} />
         <div className="flex flex-col items-center justify-center size-full">
           <div className="content-stretch flex flex-col items-center justify-center px-[40px] py-[25px] relative size-full">
             <div className="content-stretch flex gap-[231px] items-center relative shrink-0" data-name="Header">
@@ -93,7 +97,7 @@ export default function Dalima() {
         <div className="flex flex-col items-center justify-center size-full">
           <div className="content-stretch flex flex-col items-center justify-center px-[40px] py-0 relative w-full">
             <div className="h-[816px] relative shrink-0 w-full" data-name="Foto 1">
-              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgFoto1} />
+              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgFoto1)} />
             </div>
             <div className="h-[816px] relative shrink-0 w-full" data-name="video">
               <video autoPlay className="absolute max-w-none object-cover size-full" controlsList="nodownload" loop playsInline>
@@ -101,25 +105,25 @@ export default function Dalima() {
               </video>
             </div>
             <div className="h-[800px] relative shrink-0 w-full" data-name="Foto 8">
-              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgFoto8} />
+              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgFoto8)} />
             </div>
             <div className="h-[800px] relative shrink-0 w-full" data-name="Foto 9">
-              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgFoto9} />
+              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgFoto9)} />
             </div>
             <div className="h-[816px] relative shrink-0 w-full" data-name="Foto 4">
-              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgFoto4} />
+              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgFoto4)} />
             </div>
             <div className="h-[800px] relative shrink-0 w-full" data-name="Foto 7">
-              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgFoto7} />
+              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgFoto7)} />
             </div>
             <div className="h-[816px] relative shrink-0 w-full" data-name="Foto 10">
-              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgFoto10} />
+              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgFoto10)} />
             </div>
             <div className="h-[904px] relative shrink-0 w-full" data-name="Foto 11">
-              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgFoto11} />
+              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgFoto11)} />
             </div>
             <div className="h-[816px] relative shrink-0 w-full" data-name="Foto 12">
-              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgFoto12} />
+              <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={asSrc(imgFoto12)} />
             </div>
           </div>
         </div>

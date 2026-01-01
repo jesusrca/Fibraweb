@@ -23,7 +23,6 @@ function MediaItem({ media, index }: MediaItemProps) {
   const { scrollYProgress } = useScroll({
     target: itemRef,
     offset: ["start end", "end start"],
-    layoutEffect: false,
     container: undefined // Use window/document as container
   });
 
